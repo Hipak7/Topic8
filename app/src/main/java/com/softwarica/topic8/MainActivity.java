@@ -49,11 +49,12 @@ public class MainActivity extends AppCompatActivity {
             }
                 List<Employee> employeeList =response.body();
 
-                for (Employee employee: employeeList){
+                for (Employee emp: employeeList){
                     String data="";
-                    data +="Name is :" + employee.getEmployee_name()+"\n";
-                    data +="Salary is :" + employee.getEmployee_salary()+"\n";
-                    data +="Age is :" + employee.getEmployee_age()+"\n";
+                    data +="Name is :" + emp.getEmployee_name()+"\n";
+                    data +="Salary is :" + emp.getEmployee_salary()+"\n";
+                    data +="------------------------------------------" + "\n";
+
                     tvOutput.append(data);
 
                 }
@@ -61,9 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Employee>> call, Throwable t) {
-                Log.d("Msg","Faliure:" + t.getLocalizedMessage());
-                Toast.makeText(MainActivity.this, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
+                Log.d("Msg","onFailure"+t.getLocalizedMessage());
+                Toast.makeText(MainActivity.this,"Error"+t.getLocalizedMessage(),Toast.LENGTH_SHORT).show();            }
 
 
         });
